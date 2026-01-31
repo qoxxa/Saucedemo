@@ -57,8 +57,8 @@ def test_empty_fields(main_page):
     assert main_page.driver.current_url == "https://www.saucedemo.com/"
     assert check_error == "Epic sadface: Username is required"
 
-@allure.title("Пустые поля ввода")
-@allure.description("Авторизация с пустыми полями ввода")
+@allure.title("Авторизация с задержкой")
+@allure.description("Авторизация с задержкой")
 @allure.id(5)
 @allure.severity("Medium")
 def test_performance_glitch(main_page):
