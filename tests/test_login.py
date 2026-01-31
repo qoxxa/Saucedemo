@@ -48,7 +48,7 @@ def test_locked_username(main_page):
 
 @allure.title("Пустые поля ввода")
 @allure.description("Авторизация с пустыми полями ввода")
-@allure.id(5)
+@allure.id(4)
 @allure.severity("Critical")
 def test_empty_fields(main_page):
     main_page.click_login_button()
@@ -57,6 +57,10 @@ def test_empty_fields(main_page):
     assert main_page.driver.current_url == "https://www.saucedemo.com/"
     assert check_error == "Epic sadface: Username is required"
 
+@allure.title("Пустые поля ввода")
+@allure.description("Авторизация с пустыми полями ввода")
+@allure.id(5)
+@allure.severity("Medium")
 def test_performance_glitch(main_page):
     login = DataProvider().get("performance_glitch")
     password = DataProvider().get("password")
