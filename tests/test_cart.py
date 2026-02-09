@@ -1,14 +1,17 @@
 import allure
 
-from DataProvider import DataProvider
 from conftest import product_page
+from data import TestData
+
+data = TestData()
+
 @allure.title("Открыть корзину")
 @allure.description("Открыть пустую корзину товаров")
 @allure.id(1)
 @allure.severity("Critical")
 def test_open_cart(cart_page):
-    actual_url = DataProvider().get("urls.cart")
-    actual_title = DataProvider().get("page_titles.cart")
+    actual_url = data.config.get("urls.cart")
+    actual_title = data.messages.get("page_titles.cart")
 
     cart_page.open_cart()
     title = cart_page.page_cart_title()
@@ -21,7 +24,7 @@ def test_open_cart(cart_page):
 @allure.id(2)
 @allure.severity("Critical")
 def test_add_to_cart(cart_page, product_page):
-    backpack_name = DataProvider().get("products.backpack.name")
+    backpack_name = data.products.get("backpack.name")
 
     product_page.add_to_cart("backpack")
     cart_page.open_cart()
@@ -35,11 +38,11 @@ def test_add_to_cart(cart_page, product_page):
 @allure.id(3)
 @allure.severity("Critical")
 def test_add_multiple_items_to_cart(cart_page, product_page):
-    backpack = DataProvider().get("products.backpack")
-    light= DataProvider().get("products.light")
+    backpack = data.products.get("backpack")
+    light= data.products.get("light")
 
     product_page.add_to_cart("backpack")
-    product_page.add_to_cart("bike_light")
+    product_page.add_to_cart("light")
     cart_page.open_cart()
     product_names = cart_page.get_product_names()
     product_prices = cart_page.get_prices()
@@ -57,7 +60,7 @@ def test_add_multiple_items_to_cart(cart_page, product_page):
 @allure.severity("Critical")
 def test_remove_from_cart(cart_page,product_page):
     product_page.add_to_cart("backpack")
-    product_page.add_to_cart("bike_light")
+    product_page.add_to_cart("light")
 
     cart_page.open_cart()
     cart_page.remove_from_cart("backpack")
@@ -70,8 +73,8 @@ def test_remove_from_cart(cart_page,product_page):
 @allure.id(5)
 @allure.severity("Critical")
 def test_checkout(cart_page, product_page):
-    actual_title = DataProvider().get("page_titles.checkout")
-    actual_url = DataProvider().get("urls.checkout")
+    actual_title = data.messages.get("page_titles.checkout")
+    actual_url = data.config.get("urls.checkout")
 
     product_page.add_to_cart("backpack")
     cart_page.open_cart()

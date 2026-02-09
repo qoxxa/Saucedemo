@@ -1,14 +1,16 @@
 import allure
 
-from DataProvider import DataProvider
 from conftest import product_page
+from data import TestData
+
+data = TestData()
 
 @allure.title("Открыть карточку")
 @allure.description("Открыть карточку товара - рюкзак")
 @allure.id(1)
 @allure.severity("Critical")
 def test_open_card_product(product_page):
-    product = DataProvider().get("products.backpack")
+    product = data.products.get("backpack")
 
     product_page.go_product()
     actual_name = product_page.check_product_name()
@@ -23,7 +25,7 @@ def test_open_card_product(product_page):
 @allure.severity("Critical")
 def test_add_to_cart(product_page):
     product_page.add_to_cart("backpack")
-    product_page.add_to_cart("bike_light")
+    product_page.add_to_cart("light")
     quantity = product_page.check_icon_cart()
 
     assert quantity == "2"
@@ -34,7 +36,7 @@ def test_add_to_cart(product_page):
 @allure.severity("Medium")
 def test_delete_from_card(product_page):
     product_page.add_to_cart("backpack")
-    product_page.add_to_cart("bike_light")
+    product_page.add_to_cart("light")
     product_page.remove_from_cart("backpack")
     quantity = product_page.check_icon_cart()
 
@@ -45,11 +47,10 @@ def test_delete_from_card(product_page):
 @allure.id(4)
 @allure.severity("Medium")
 def test_sort_asc(product_page):
-    sort_value = DataProvider().get("sort_options.asc")
+    sort_value = data.sort.get("asc")
 
     product_page.sort_container(sort_value)
-    prices = product_page.get_prices()
-    numeric_prices = [product_page.extract_price(p) for p in prices]
+    numeric_prices = product_page.get_numeric_prices()
 
     assert numeric_prices == sorted(numeric_prices)
 
@@ -58,11 +59,10 @@ def test_sort_asc(product_page):
 @allure.id(5)
 @allure.severity("Medium")
 def test_sort_desc(product_page):
-    sort_value = DataProvider().get("sort_options.desc")
+    sort_value = data.sort.get("desc")
 
     product_page.sort_container(sort_value)
-    prices = product_page.get_prices()
-    numeric_prices = [product_page.extract_price(p) for p in prices]
+    numeric_prices = product_page.get_numeric_prices()
 
     assert numeric_prices == sorted(numeric_prices, reverse=True)
 
@@ -71,7 +71,7 @@ def test_sort_desc(product_page):
 @allure.id(6)
 @allure.severity("Medium")
 def test_sort_a_z(product_page):
-    sort_value = DataProvider().get("sort_options.a-z")
+    sort_value = data.sort.get("a-z")
 
     product_page.sort_container(sort_value)
     names = product_page.get_product_names()
@@ -83,7 +83,7 @@ def test_sort_a_z(product_page):
 @allure.id(7)
 @allure.severity("Medium")
 def test_sort_z_a(product_page):
-    sort_value = DataProvider().get("sort_options.z-a")
+    sort_value = data.sort.get("z-a")
 
     product_page.sort_container(sort_value)
     names = product_page.get_product_names()

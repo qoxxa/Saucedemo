@@ -51,15 +51,23 @@ Saucedemo/
 │ ├── 📄 cart_page # Методы для работы со страницей корзины
 │ ├── 📄 login_page # Методы для работы со страницей входа
 │ ├── 📄 product_page # Методы для работы со страницей товаров
+├── 📂 test_data
+│ ├── 📄 config.json # browsers, urls, env
+│ ├── 📄 messages.json # ошибки, заголовки, тексты
+│ ├── 📄 products.json # товары, цены, ID
+│ ├── 📄 selectors.json # все селекторы
+│ ├── 📄 sort.json # опции сортировки
+│ ├── 📄 users.json # valid & invalid credentials
 ├── 📂 tests
 │ ├── 📄 test_cart.py # UI автотесты корзины
 │ └── 📄 test_login.py # UI автотесты логина
 │ └── 📄 test_product.py # UI автотесты товаров
 │
+├── 📄 data.py # Методы для работы с тестовыми данными
 ├── 📄 requirements.txt # Зависимости Python
 ├── 📄 pytest.ini # Конфигурация pytest
 ├── 📄 run.sh # Скрипт запуска тестов и генерации отчета
-├── 📄 test_data.json # Файл с тестовыми данными
+ 📄 test_data.json # Файл с тестовыми данными
 ├── 📄 DataProvider.py # Утилита для получения данных из test_data.json
 └── 📄 conftest.py # Фикстуры и настройки Pytest
 ```

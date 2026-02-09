@@ -1,6 +1,7 @@
 import os
 import pytest
 import allure
+
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium import webdriver
@@ -8,12 +9,15 @@ from DataProvider import DataProvider
 from pages.login_page import LoginPage
 from pages.product_page import ProductPage
 from pages.card_page import CartPage
+from data import TestData
+
+data = TestData()
 
 @pytest.fixture(scope='session')
 def browser():
     headless = os.getenv("HEADLESS", "false").lower() == "true"
     timeout = 10
-    browser_name = DataProvider().get("browsers.chrome").lower()
+    browser_name = DataProvider("config.json").get("browsers.chrome").lower()
     prefs = {"profile.password_manager_leak_detection": False}
 
     if browser_name == 'chrome':
@@ -48,8 +52,8 @@ def browser():
         browser.quit()
 
 def _login_and_navigate(browser, url_key, page_class):
-    user = DataProvider().get("users.standard")
-    url = DataProvider().get(url_key)
+    user = data.users.get("standard")
+    url = data.config.get(url_key)
 
     # Логинимся
     login_page = LoginPage(browser)

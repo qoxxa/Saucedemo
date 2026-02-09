@@ -1,0 +1,12 @@
+{
+  "page_titles": {
+    "products": "Products",
+    "cart": "Your Cart",
+    "checkout": "Checkout: Your Information"
+  },
+  "errors_login": {
+    "invalid_password": "Epic sadface: Username and password do not match any user in this service",
+    "locked": "Epic sadface: Sorry, this user has been locked out.",
+    "empty_fields": "Epic sadface: Username is required"
+  }
+}

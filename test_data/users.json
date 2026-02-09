@@ -1,0 +1,36 @@
+{
+  "standard": {
+      "login": "standard_user",
+      "password": "secret_sauce"
+    },
+    "locked_out": {
+      "login": "locked_out_user",
+      "password": "secret_sauce"
+    },
+    "problem": {
+      "login": "problem_user",
+      "password": "secret_sauce"
+    },
+    "performance_glitch": {
+      "login": "performance_glitch_user",
+      "password": "secret_sauce"
+    },
+    "error": {
+      "login": "error_user",
+      "password": "secret_sauce"
+  },
+  "invalid_logins": {
+    "empty": "",
+    "nonexistent": "nonexistent_user",
+    "sql_injection": "'; DROP TABLE users; --",
+    "xss": "<script>alert(1)</script>",
+    "spaces": "   ",
+    "special_chars": "!@#$%^&*()"
+  },
+  "invalid_passwords": {
+    "invalid": "invalid_password",
+    "empty": "",
+    "wrong": "wrong_password",
+    "sql_injection": "'; DROP TABLE users; --"
+  }
+}
