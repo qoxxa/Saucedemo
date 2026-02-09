@@ -67,7 +67,7 @@ Saucedemo/
 ├── 📄 requirements.txt # Зависимости Python
 ├── 📄 pytest.ini # Конфигурация pytest
 ├── 📄 run.sh # Скрипт запуска тестов и генерации отчета
- 📄 test_data.json # Файл с тестовыми данными
+├── 📄 Dockerfile  # Файл конфигурации Doker
 ├── 📄 DataProvider.py # Утилита для получения данных из test_data.json
 └── 📄 conftest.py # Фикстуры и настройки Pytest
 ```
